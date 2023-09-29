@@ -1,4 +1,4 @@
-package br.com.digitalhouse.Clinica.odontologica.app.api.handler;
+package br.com.digitalhouse.Clinica.odontologica.infrastructure.configuration.jackson;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
