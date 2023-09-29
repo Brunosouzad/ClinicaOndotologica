@@ -3,12 +3,12 @@ package br.com.digitalhouse.Clinica.odontologica.app.api;
 import br.com.digitalhouse.Clinica.odontologica.app.api.dto.request.CreateClinicaRequest;
 import br.com.digitalhouse.Clinica.odontologica.app.api.dto.response.ClinicaDetailedResponse;
 import br.com.digitalhouse.Clinica.odontologica.app.api.dto.response.ClinicaSummaryResponse;
+import br.com.digitalhouse.Clinica.odontologica.domain.entity.Clinica;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.models.info.Info;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,15 +20,15 @@ import java.util.Map;
 import java.util.UUID;
 
 @RequestMapping("v1/clinicas")
-@Tag(name = "Clinica")
-@ApiResponse(responseCode = "200", description = "Sucesso!", content = {
-        @Content(mediaType = "application/json", schema = @Schema(implementation = Info.class))
-})
+@Tag(name = "Clinica", description = "Clinica API")
+
 public interface ClinicaApi {
     @GetMapping
     @Operation(summary = "Buscar todas Clinica", description = "Retorna uma lista de Clinicas")
+    @ApiResponse(responseCode = "200", description = "Sucesso!", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Clinica.class))})
+    @ApiResponse(responseCode = "401", description = "Requer Autorização", content = {@Content(schema = @Schema())})
+    @ApiResponse(responseCode = "500", description = "Erro no servidor", content = {@Content( schema = @Schema())})
     ResponseEntity<Page<ClinicaSummaryResponse>> buscarClinica(@PageableDefault Pageable page);
-
     @PostMapping
     @Operation(summary = "Criar Clinica", description = "Retorna uma Clinica Criada")
 

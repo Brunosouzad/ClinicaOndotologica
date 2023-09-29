@@ -3,6 +3,7 @@ package br.com.digitalhouse.Clinica.odontologica.domain.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -28,6 +29,7 @@ public class Clinica {
 
     @NotNull
     @Column(name = "razao_Social")
+    @Size(min = 5, message = "A razao social deve ter pelo menos 5 caracteres")
     private String razaoSocial;
 
     @NotNull
