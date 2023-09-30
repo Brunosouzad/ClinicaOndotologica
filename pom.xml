@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.digitalhouse</groupId>
 	<artifactId>Clinica-odontologica</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Clinica-odontologica</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -80,6 +80,12 @@
 			<groupId>com.auth0</groupId>
 			<artifactId>java-jwt</artifactId>
 			<version>4.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.224</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.javafaker</groupId>

@@ -1,0 +1,26 @@
+
+
+  version: '3.9'
+
+  services:
+    app:
+      build: .
+      container_name: clinicas
+      ports:
+        - "8083:8080"
+      environment:
+        SPRING_PROFILES_ACTIVE: dev
+        MYSQL_HOST: mysql:3306
+        MYSQL_USERNAME: root
+        MYSQL_PASSWORD: root
+      depends_on:
+        - mysql
+    mysql:
+      container_name: mysql
+      image: mysql:latest
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: clinicas
+        MYSQL_ROOT_HOST: "%"
+      ports:
+        - "3309:3306"
