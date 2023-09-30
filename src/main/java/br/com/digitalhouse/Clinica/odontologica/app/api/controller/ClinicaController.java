@@ -1,9 +1,9 @@
 package br.com.digitalhouse.Clinica.odontologica.app.api.controller;
 
 import br.com.digitalhouse.Clinica.odontologica.app.api.ClinicaApi;
-import br.com.digitalhouse.Clinica.odontologica.app.api.dto.request.CreateClinicaRequest;
-import br.com.digitalhouse.Clinica.odontologica.app.api.dto.response.ClinicaDetailedResponse;
-import br.com.digitalhouse.Clinica.odontologica.app.api.dto.response.ClinicaSummaryResponse;
+import br.com.digitalhouse.Clinica.odontologica.app.api.dto.request.clinica.CreateClinicaRequest;
+import br.com.digitalhouse.Clinica.odontologica.app.api.dto.response.clinica.ClinicaDetailedResponse;
+import br.com.digitalhouse.Clinica.odontologica.app.api.dto.response.clinica.ClinicaSummaryResponse;
 import br.com.digitalhouse.Clinica.odontologica.domain.entity.Clinica;
 import br.com.digitalhouse.Clinica.odontologica.domain.service.ClinicaService;
 import com.fasterxml.jackson.databind.ObjectMapper;

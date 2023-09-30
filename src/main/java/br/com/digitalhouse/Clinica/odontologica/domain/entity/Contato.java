@@ -11,7 +11,8 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "contatos")
+@Table(name = "contatos")
 @Getter
 @Setter
 public class Contato {
@@ -27,15 +28,6 @@ public class Contato {
     private LocalDateTime atualizadoEm;
     private Integer fax;
 
-    @PrePersist
-    public void prePersist() {
-        LocalDateTime now = LocalDateTime.now();
-        this.criadoEm = now;
-        this.atualizadoEm = now;
-    }
 
-    @PreUpdate
-    public void preUpdate() {
-        this.atualizadoEm = LocalDateTime.now();
-    }
+
 }

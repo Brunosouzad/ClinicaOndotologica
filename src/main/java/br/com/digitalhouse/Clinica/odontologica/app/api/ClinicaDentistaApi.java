@@ -18,31 +18,29 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.UUID;
-
-@RequestMapping("v1/clinicas")
-@Tag(name = "Clinica", description = "Clinica API")
-
-public interface ClinicaApi {
+@RequestMapping("v1/clinicadentista")
+@Tag(name = "Clinica Dentistas", description = "Clinica Dentista API")
+public interface ClinicaDentistaApi {
     @GetMapping
-    @Operation(summary = "Buscar todas Clinica", description = "Retorna uma lista de Clinicas")
+    @Operation(summary = "Buscar todos Dentista da clinica", description = "Retorna uma lista de Clinicas")
     @ApiResponse(responseCode = "200", description = "Sucesso!", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Clinica.class))})
     @ApiResponse(responseCode = "401", description = "Requer Autorização", content = {@Content(schema = @Schema())})
     @ApiResponse(responseCode = "500", description = "Erro no servidor", content = {@Content( schema = @Schema())})
-    ResponseEntity<Page<ClinicaSummaryResponse>> buscarClinica(@PageableDefault Pageable page);
+    ResponseEntity<Page<ClinicaSummaryResponse>> buscarClinicaDentista(@PageableDefault Pageable page);
     @PostMapping
     @Operation(summary = "Criar Clinica", description = "Retorna uma Clinica Criada")
 
-    ResponseEntity<ClinicaDetailedResponse> criarClinica(@RequestBody @Valid CreateClinicaRequest request);
+    ResponseEntity<ClinicaDetailedResponse> criarClinicaDentista(@RequestBody @Valid CreateClinicaRequest request);
 
     @GetMapping("{id}")
     @Operation(summary = "Buscar Clinica", description = "Retorna uma Clinica que foi buscada pelo ID")
-    ResponseEntity<ClinicaDetailedResponse> buscarClinicaPorId(@PathVariable UUID id);
+    ResponseEntity<ClinicaDetailedResponse> buscarClinicaDentistaPorId(@PathVariable UUID id);
 
     @PatchMapping("{id}")
     @Operation(summary = "Atualizar Clinica", description = "Autliza cliica por ID")
-    ResponseEntity<ClinicaDetailedResponse> atualizarClinicaPorId(@PathVariable UUID id, @RequestBody Map<String, Object> campos);
+    ResponseEntity<ClinicaDetailedResponse> atualizarClinicaDentistaPorId(@PathVariable UUID id, @RequestBody Map<String, Object> campos);
 
     @DeleteMapping("{id}")
     @Operation(summary = "Excluir Clinica", description = "Exclui Clinica selecionada por ID")
-    ResponseEntity<Void> excluirClinicaPorId(@PathVariable UUID id);
+    ResponseEntity<Void> excluirClinicaDentistaPorId(@PathVariable UUID id);
 }

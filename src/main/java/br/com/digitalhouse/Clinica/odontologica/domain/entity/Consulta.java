@@ -1,6 +1,5 @@
 package br.com.digitalhouse.Clinica.odontologica.domain.entity;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -8,36 +7,43 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "enderecos")
-@Table(name = "enderecos")
+@Entity(name = "consultas")
+@Table(name = "consultas")
 @Getter
 @Setter
-public class Endereco {
-
+public class Consulta {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id_consulta")
     private UUID id;
+
     @NotNull
-    @Column(name = "lagadouro")
-    private String lagadouro;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_paciente")
+    private Paciente paciente;
+
     @NotNull
-    @Column(name = "bairro")
-    private String bairro;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_dentista")
+    private Dentista dentistas;
+
+    @Column(name = "data_consulta")
+    private LocalDate dataDaConsulta;
+
     @Column(name = "criado_em")
     private LocalDateTime criadoEm;
+
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
-    @NotNull
-    @Column(name = "cidade")
-    private String cidade;
-    @NotNull
-    @Column(name = "estado")
-    private String estado;
-    @NotNull
-    @Column(name = "cep")
-    private String cep;
+
+    @Column(name = "cancelada")
+    private Boolean cancelada;
+
+    @Column(name = "motivo_cancelamento")
+    private String motivoDoCancelamento;
 
     @PrePersist
     public void prePersist() {
@@ -50,4 +56,6 @@ public class Endereco {
     public void preUpdate() {
         this.atualizadoEm = LocalDateTime.now();
     }
+
+
 }
